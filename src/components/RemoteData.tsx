@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
-import {ViewState} from '../services/view/ViewState';
+import {ViewState} from '../store/ViewState';
 import {TextView} from './TextView';
 
 export function RemoteData(props: {

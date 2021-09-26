@@ -7,8 +7,8 @@ import {
   HomeState,
   initialHomeState,
 } from '../src/screens/HomeScreen/homeReducer';
-import {User} from '../src/services/models/User';
-import {ViewState} from '../src/services/view/ViewState';
+import {UserJSON} from '../src/services/api/models/UserJSON';
+import {ViewState} from '../src/store/ViewState';
 import {UsersStub, UserStub} from './testDoubles/UsersStubs';
 
 describe('homeReducer', () => {
@@ -25,7 +25,7 @@ describe('homeReducer', () => {
     });
 
     it('sets viewState to Empty if users array is empty, otherwise sets it to Data', () => {
-      const cases: [User[], ViewState][] = [
+      const cases: [UserJSON[], ViewState][] = [
         [[], ViewState.Empty],
         [UsersStub, ViewState.Data],
       ];
@@ -118,7 +118,7 @@ function stateWithViewState(viewState: ViewState): HomeState {
   };
 }
 
-function stateWithUsers(users: User[]): HomeState {
+function stateWithUsers(users: UserJSON[]): HomeState {
   return {
     ...initialHomeState,
     users,

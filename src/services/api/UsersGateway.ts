@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
-import {User} from '../models/User';
+import {UserJSON} from './models/UserJSON';
 
 export interface UsersGateway {
-  fetchUsers(): Observable<User[]>;
+  fetchUsers(): Observable<UserJSON[]>;
 }

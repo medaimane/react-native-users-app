@@ -1,11 +1,11 @@
-import {User} from '../../services/models/User';
-import {ViewState} from '../../services/view/ViewState';
+import {UserJSON} from '../../services/api/models/UserJSON';
+import {ViewState} from '../../store/ViewState';
 import {Action} from '../../store/Action';
 import {HomeActions, HomeViewActions} from './HomeActions';
 
 export interface HomeState {
   viewState: ViewState;
-  users: User[];
+  users: UserJSON[];
 }
 
 export const initialHomeState: HomeState = {
@@ -26,7 +26,7 @@ export function homeReducer(
     }
 
     case HomeActions.fetchUsers.success.type: {
-      const users: User[] = action.payload;
+      const users: UserJSON[] = action.payload;
 
       return {
         ...state,
@@ -62,13 +62,13 @@ export function homeReducer(
   }
 }
 
-function sortUsersByNameAsc(users: User[]): User[] {
+function sortUsersByNameAsc(users: UserJSON[]): UserJSON[] {
   return users.sort((u, v) =>
     u.name.toLowerCase().localeCompare(v.name.toLowerCase()),
   );
 }
 
-function sortUsersByAgeAsc(users: User[]): User[] {
+function sortUsersByAgeAsc(users: UserJSON[]): UserJSON[] {
   return users.sort((u, v) => {
     if (u.age === v.age) {
       return 0;

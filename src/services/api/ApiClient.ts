@@ -1,7 +1,7 @@
-import {User} from '../models/User';
+import {UserJSON} from './models/UserJSON';
 
 export class ApiClient {
-  private static readonly users: User[] = [
+  private static readonly users: UserJSON[] = [
     {
       name: 'Alex',
       age: 20,
@@ -16,7 +16,7 @@ export class ApiClient {
     },
   ];
 
-  static async fetchUsers(): Promise<User[]> {
+  static async fetchUsers(): Promise<UserJSON[]> {
     return Promise.resolve(ApiClient.users);
   }
 }

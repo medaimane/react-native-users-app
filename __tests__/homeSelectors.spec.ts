@@ -2,7 +2,7 @@ import {
   HomeState,
   initialHomeState,
 } from '../src/screens/HomeScreen/homeReducer';
-import {ViewState} from '../src/services/view/ViewState';
+import {ViewState} from '../src/store/ViewState';
 import {
   getViewState,
   UserPresentable,

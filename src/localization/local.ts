@@ -1,5 +1,5 @@
 export const Local = {
-  appLogo: 'LOGO',
+  appLogo: 'Users',
 
   refresh: 'Refresh',
 };

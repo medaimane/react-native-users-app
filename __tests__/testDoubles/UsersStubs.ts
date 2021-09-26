@@ -1,11 +1,11 @@
-import {User} from '../../src/services/models/User';
+import {UserJSON} from '../../src/services/api/models/UserJSON';
 
-export const UserStub: User = {
+export const UserStub: UserJSON = {
   age: 1,
   name: 'user',
 };
 
-export const UsersStub: User[] = [
+export const UsersStub: UserJSON[] = [
   {
     age: 1,
     name: 'user one',

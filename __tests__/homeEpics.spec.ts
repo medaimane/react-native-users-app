@@ -18,6 +18,7 @@ describe('homeEpics', () => {
 
   beforeEach(() => {
     dependencies = new TestAssembly();
+    dependencies.usersGateway.fetchUsers.mockReturnValue(of(void 0));
 
     sut = homeEpics;
   });

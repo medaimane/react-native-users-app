@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.8",
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-redux": "^7.2.5",
@@ -22,7 +23,7 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.0.2",
     "@types/react-native": "^0.65.0",
     "@types/react-test-renderer": "^17.0.1",
     "babel-jest": "^26.6.3",
@@ -38,13 +39,19 @@
   },
   "jest": {
     "preset": "react-native",
+    "cacheDirectory": ".jest/cache",
+    "clearMocks": true,
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js",
-      "jsx",
-      "json",
-      "node"
+      "json"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
     ]
   }
 }

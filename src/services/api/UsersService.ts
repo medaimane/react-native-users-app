@@ -1,10 +1,10 @@
 import {from, Observable} from 'rxjs';
-import {User} from '../models/User';
+import {UserJSON} from './models/UserJSON';
 import {ApiClient} from './ApiClient';
 import {UsersGateway} from './UsersGateway';
 
 export class UsersService implements UsersGateway {
-  fetchUsers(): Observable<User[]> {
+  fetchUsers(): Observable<UserJSON[]> {
     return from(ApiClient.fetchUsers());
   }
 }
