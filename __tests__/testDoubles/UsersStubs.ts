@@ -1,5 +1,10 @@
 import {User} from '../../src/services/models/User';
 
+export const UserStub: User = {
+  age: 1,
+  name: 'user',
+};
+
 export const UsersStub: User[] = [
   {
     age: 1,

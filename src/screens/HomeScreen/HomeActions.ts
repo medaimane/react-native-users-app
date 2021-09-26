@@ -13,4 +13,8 @@ export const HomeActions = {
 
 export const HomeViewActions = {
   start: actionCreator('START'),
+  refresh: actionCreator('Refresh'),
+
+  sortByNameAsc: actionCreator('SORT_BY_NAME_ASC'),
+  sortByAgeAsc: actionCreator('SORT_BY_AGE_ASC'),
 };

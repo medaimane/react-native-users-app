@@ -22,16 +22,20 @@ describe('homeEpics', () => {
     sut = homeEpics;
   });
 
-  describe('when START action received', () => {
-    it('emits FEETCH_USERS_REQUEST action', () => {
-      const next = jest.fn();
-      const action$ = of(HomeViewActions.start());
+  describe('when START or Refresh action received', () => {
+    const cases = [HomeViewActions.start, HomeViewActions.refresh];
 
-      sut(action$, state$, dependencies).subscribe(next);
+    cases.forEach(action => {
+      it('emits FEETCH_USERS_REQUEST action', () => {
+        const next = jest.fn();
+        const action$ = of(action());
 
-      expect(next).toBeCalledWith(
-        expectedAction(HomeActions.fetchUsers.request.type),
-      );
+        sut(action$, state$, dependencies).subscribe(next);
+
+        expect(next).toBeCalledWith(
+          expectedAction(HomeActions.fetchUsers.request.type),
+        );
+      });
     });
   });
 

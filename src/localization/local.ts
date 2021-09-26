@@ -1,4 +1,5 @@
 export const Local = {
-  next: 'Next',
-  prev: 'Previous',
+  appLogo: 'LOGO',
+
+  refresh: 'Refresh',
 };

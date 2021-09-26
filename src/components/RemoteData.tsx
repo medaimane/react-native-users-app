@@ -22,7 +22,11 @@ export function RemoteData(props: {
       }
 
       case ViewState.Loading: {
-        return <ActivityIndicator size={'large'} />;
+        return (
+          <View style={styles.loading}>
+            <ActivityIndicator size={'large'} />
+          </View>
+        );
       }
     }
   };
@@ -33,5 +37,10 @@ export function RemoteData(props: {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loading: {
+    flex: 1,
+    paddingTop: 16,
+    alignItems: 'center',
   },
 });

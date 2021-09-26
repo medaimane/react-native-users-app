@@ -5,7 +5,7 @@ import {HomeActions, HomeViewActions} from './HomeActions';
 
 const start: EpicType = action$ =>
   action$.pipe(
-    ofType(HomeViewActions.start.type),
+    ofType(HomeViewActions.start.type, HomeViewActions.refresh.type),
     mapTo(HomeActions.fetchUsers.request()),
   );
 
@@ -14,6 +14,7 @@ const fetchImages: EpicType = (action$, _state$, {usersGateway}) =>
     ofType(HomeActions.fetchUsers.request.type),
     switchMap(() =>
       usersGateway.fetchUsers().pipe(
+        // delay(2000), // used to simulate the loading view state
         map(HomeActions.fetchUsers.success),
         catchError(() => of(HomeActions.fetchUsers.failure())),
       ),

@@ -1,4 +1,7 @@
-import {HomeActions} from '../src/screens/HomeScreen/HomeActions';
+import {
+  HomeActions,
+  HomeViewActions,
+} from '../src/screens/HomeScreen/HomeActions';
 import {
   homeReducer,
   HomeState,
@@ -6,17 +9,14 @@ import {
 } from '../src/screens/HomeScreen/homeReducer';
 import {User} from '../src/services/models/User';
 import {ViewState} from '../src/services/view/ViewState';
-import {UsersStub} from './testDoubles/UsersStubs';
+import {UsersStub, UserStub} from './testDoubles/UsersStubs';
 
 describe('homeReducer', () => {
   const sut = homeReducer;
 
   describe('when FETCH_USERS_SUCCESS action received', () => {
     it('sets users to the received payload', () => {
-      const state: HomeState = {
-        ...initialHomeState,
-        users: [],
-      };
+      const state = stateWithUsers([]);
       const action = HomeActions.fetchUsers.success(UsersStub);
 
       const newState = sut(state, action);
@@ -51,11 +51,76 @@ describe('homeReducer', () => {
       expect(newState.viewState).toEqual(ViewState.Error);
     });
   });
+
+  describe('when SORT_BY_NAME action is received', () => {
+    it('sorts users asc', () => {
+      const state = stateWithUsers([
+        {
+          ...UserStub,
+          name: 'Cruz',
+        },
+        {
+          ...UserStub,
+          name: 'adam',
+        },
+      ]);
+      const action = HomeViewActions.sortByNameAsc();
+
+      const newState = sut(state, action);
+
+      expect(newState.users).toEqual([
+        {
+          ...UserStub,
+          name: 'adam',
+        },
+        {
+          ...UserStub,
+          name: 'Cruz',
+        },
+      ]);
+    });
+  });
+
+  describe('when SORT_BY_AGE action is received', () => {
+    it('sorts users asc', () => {
+      const state = stateWithUsers([
+        {
+          ...UserStub,
+          age: 47,
+        },
+        {
+          ...UserStub,
+          age: 33,
+        },
+      ]);
+      const action = HomeViewActions.sortByAgeAsc();
+
+      const newState = sut(state, action);
+
+      expect(newState.users).toEqual([
+        {
+          ...UserStub,
+          age: 33,
+        },
+        {
+          ...UserStub,
+          age: 47,
+        },
+      ]);
+    });
+  });
 });
 
 function stateWithViewState(viewState: ViewState): HomeState {
   return {
     ...initialHomeState,
     viewState,
+  };
+}
+
+function stateWithUsers(users: User[]): HomeState {
+  return {
+    ...initialHomeState,
+    users,
   };
 }
