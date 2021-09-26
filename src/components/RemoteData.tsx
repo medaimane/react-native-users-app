@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {Local} from '../localization/local';
 import {ViewState} from '../store/ViewState';
 import {TextView} from './TextView';
 
@@ -14,11 +15,11 @@ export function RemoteData(props: {
       }
 
       case ViewState.Empty: {
-        return <TextView text={'No data found!'} />;
+        return <TextView text={Local.noDataFound} />;
       }
 
       case ViewState.Error: {
-        return <TextView text={'Oops! Something went wrong.'} />;
+        return <TextView text={Local.somethingWentWrong} />;
       }
 
       case ViewState.Loading: {

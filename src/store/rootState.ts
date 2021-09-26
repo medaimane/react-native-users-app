@@ -4,6 +4,6 @@ export interface RootState {
   home: HomeState;
 }
 
-export const rootState: RootState = {
+export const initialRootState: RootState = {
   home: initialHomeState,
 };

@@ -13,31 +13,31 @@ export enum FontSize {
 
 export const Fonts = {
   Regular: (size = FontSize.Normal): TextStyle => ({
-    // fontFamily: 'OpenSans-Regular',
+    // fontFamily: '-----------Regular',
     fontSize: size,
     fontWeight: 'normal',
     color: Colors.Black,
   }),
   Bold: (size = FontSize.Normal): TextStyle => ({
-    // fontFamily: 'OpenSans-Bold',
+    // fontFamily: '-----------Bold',
     fontSize: size,
     fontWeight: 'bold',
     color: Colors.Black,
   }),
   Italic: (size = FontSize.Normal): TextStyle => ({
-    // fontFamily: 'OpenSans-Italic',
+    // fontFamily: '-----------Italic',
     fontSize: size,
     fontStyle: 'italic',
     color: Colors.Black,
   }),
   Light: (size = FontSize.Normal): TextStyle => ({
-    // fontFamily: 'OpenSans-Light',
+    // fontFamily: '-----------Light',
     fontSize: size,
     fontWeight: '100',
     color: Colors.Black,
   }),
   SemiBold: (size = FontSize.Normal): TextStyle => ({
-    // fontFamily: 'OpenSans-SemiBold',
+    // fontFamily: '-----------SemiBold',
     fontWeight: '500',
     fontSize: size,
     color: Colors.Black,

@@ -35,40 +35,9 @@ describe('OfflineUsersService', () => {
   });
 
   describe('fetchUsers', () => {
-    describe('when fetsh from network is disable', () => {
+    describe('when fetch from network is disabled', () => {
       beforeEach(() => {
         timer.isUseNetwork.mockReturnValue(false);
-      });
-
-      describe('when there is no users data stored', () => {
-        it('fetches users data using the gateway', () => {
-          usersStogare.getUsers.mockReturnValue(of(null));
-
-          sut.fetchUsers().subscribe();
-
-          expect(usersService.fetchUsers).toBeCalled();
-        });
-
-        describe('when data is fetched', () => {
-          beforeEach(() => {
-            usersStogare.getUsers.mockReturnValue(of(null));
-            usersService.fetchUsers.mockReturnValue(of(UsersStub));
-          });
-
-          it('stores it locally', () => {
-            sut.fetchUsers().subscribe();
-
-            expect(usersStogare.storeUsers).toBeCalledWith(UsersStub);
-          });
-
-          it('returns fetched data', () => {
-            const next = jest.fn();
-
-            sut.fetchUsers().subscribe(next);
-
-            expect(next).toBeCalledWith(UsersStub);
-          });
-        });
       });
 
       describe('when there is users data stored', () => {
@@ -76,7 +45,7 @@ describe('OfflineUsersService', () => {
           usersStogare.getUsers.mockReturnValue(of(UsersStub));
         });
 
-        it('does not call the gatway', () => {
+        it('does not fetch from network or store fetched data', () => {
           sut.fetchUsers().subscribe();
 
           expect(usersService.fetchUsers).not.toBeCalled();
@@ -91,17 +60,34 @@ describe('OfflineUsersService', () => {
           expect(next).toBeCalledWith(UsersStub);
         });
       });
+
+      describe('when there is no users data stored', () => {
+        it('fetches users data from network', () => {
+          usersStogare.getUsers.mockReturnValue(of(null));
+
+          sut.fetchUsers().subscribe();
+
+          expect(usersService.fetchUsers).toBeCalled();
+        });
+
+        describe('when data is fetched', () => {
+          beforeEach(() => {
+            usersStogare.getUsers.mockReturnValue(of(null));
+            usersService.fetchUsers.mockReturnValue(of(UsersStub));
+          });
+
+          itStoresThenReturnsUsers();
+        });
+      });
     });
   });
 
-  describe('when fetsh from network is enable', () => {
+  describe('when fetch from network is enabled', () => {
     beforeEach(() => {
       timer.isUseNetwork.mockReturnValue(true);
     });
 
-    it('fetches users data using the gateway', () => {
-      usersStogare.getUsers.mockReturnValue(of(null));
-
+    it('fetches users data from network', () => {
       sut.fetchUsers().subscribe();
 
       expect(usersService.fetchUsers).toBeCalled();
@@ -109,23 +95,21 @@ describe('OfflineUsersService', () => {
 
     describe('when data is fetched', () => {
       beforeEach(() => {
-        usersStogare.getUsers.mockReturnValue(of(null));
         usersService.fetchUsers.mockReturnValue(of(UsersStub));
       });
 
-      it('stores it locally', () => {
-        sut.fetchUsers().subscribe();
-
-        expect(usersStogare.storeUsers).toBeCalledWith(UsersStub);
-      });
-
-      it('returns fetched data', () => {
-        const next = jest.fn();
-
-        sut.fetchUsers().subscribe(next);
-
-        expect(next).toBeCalledWith(UsersStub);
-      });
+      itStoresThenReturnsUsers();
     });
   });
+
+  function itStoresThenReturnsUsers() {
+    it('stores then returns data', () => {
+      const next = jest.fn();
+
+      sut.fetchUsers().subscribe(next);
+
+      expect(usersStogare.storeUsers).toBeCalledWith(UsersStub);
+      expect(next).toBeCalledWith(UsersStub);
+    });
+  }
 });

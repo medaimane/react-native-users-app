@@ -36,6 +36,6 @@ export const actionCreatorFactory =
             payload,
             type: namespacedType,
           }),
-      }
+      },
     );
   };

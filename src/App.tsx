@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {Provider} from 'react-redux';
 import {TextView} from './components/TextView';
+import {Local} from './localization/local';
 import {HomeScreen} from './screens/HomeScreen/HomeScreen';
 import store from './store/configureStore';
 import {Colors} from './theme/Colors';
@@ -15,10 +16,7 @@ export const App = () => {
         <View style={styles.container}>
           <HomeScreen />
         </View>
-        <TextView
-          textStyle={styles.text}
-          text={'made with love by medaimane'}
-        />
+        <TextView textStyle={styles.text} text={Local.creatorWords} />
       </SafeAreaView>
     </Provider>
   );

@@ -7,4 +7,9 @@ export const Local = {
   sortByName: 'Sort by name',
 
   yearsOld: 'years old',
+
+  noDataFound: 'No data found!',
+  somethingWentWrong: 'Oops! Something went wrong.',
+
+  creatorWords: 'made with love by medaimane',
 };
