@@ -4,7 +4,9 @@ React Native Users App
 
 ## About
 
-The purpose of this react native app sample is to show a list of data and provide sorting option based on the list items. 
+The purpose of this react native app sample is to show a list of data and provide sorting option based on the list items.
+
+The app support offline mode and uses locally stored data for each api call. On the other hand, the stored data will be refreshed once in a hour.
 
 ## Instructions
 
