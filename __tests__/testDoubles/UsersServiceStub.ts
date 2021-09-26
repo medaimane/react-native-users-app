@@ -1,5 +1,6 @@
-import {UsersGateway} from '../../src/services/api/UsersGateway';
+import {OfflineUsers} from '../../src/services/offline/OfflineUsers';
 
-export class UsersServiceStub implements UsersGateway {
+export class UsersServiceStub implements OfflineUsers {
+  start = jest.fn();
   fetchUsers = jest.fn();
 }

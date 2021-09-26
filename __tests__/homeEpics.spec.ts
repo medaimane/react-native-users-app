@@ -18,25 +18,42 @@ describe('homeEpics', () => {
 
   beforeEach(() => {
     dependencies = new TestAssembly();
-    dependencies.usersGateway.fetchUsers.mockReturnValue(of(void 0));
+    dependencies.usersService.fetchUsers.mockReturnValue(of(void 0));
+    dependencies.usersService.start.mockReturnValue(void 0);
 
     sut = homeEpics;
   });
 
-  describe('when START or Refresh action received', () => {
-    const cases = [HomeViewActions.start, HomeViewActions.refresh];
+  describe('when START action received', () => {
+    const action$ = of(HomeViewActions.start());
 
-    cases.forEach(action => {
-      it('emits FEETCH_USERS_REQUEST action', () => {
-        const next = jest.fn();
-        const action$ = of(action());
+    it('calls user service start', () => {
+      sut(action$, state$, dependencies).subscribe();
 
-        sut(action$, state$, dependencies).subscribe(next);
+      expect(dependencies.usersService.start).toBeCalled();
+    });
 
-        expect(next).toBeCalledWith(
-          expectedAction(HomeActions.fetchUsers.request.type),
-        );
-      });
+    it('emits FEETCH_USERS_REQUEST action', () => {
+      const next = jest.fn();
+
+      sut(action$, state$, dependencies).subscribe(next);
+
+      expect(next).toBeCalledWith(
+        expectedAction(HomeActions.fetchUsers.request.type),
+      );
+    });
+  });
+
+  describe('when REFRESH action received', () => {
+    it('emits FEETCH_USERS_REQUEST action', () => {
+      const next = jest.fn();
+      const action$ = of(HomeViewActions.refresh());
+
+      sut(action$, state$, dependencies).subscribe(next);
+
+      expect(next).toBeCalledWith(
+        expectedAction(HomeActions.fetchUsers.request.type),
+      );
     });
   });
 
@@ -48,13 +65,13 @@ describe('homeEpics', () => {
 
       sut(action$, state$, dependencies).subscribe(next);
 
-      expect(dependencies.usersGateway.fetchUsers).toBeCalled();
+      expect(dependencies.usersService.fetchUsers).toBeCalled();
     });
 
     describe('when call successed', () => {
       it('emits FEETCH_USERS_SUCCESS action with the list of users as payload', () => {
         const next = jest.fn();
-        dependencies.usersGateway.fetchUsers.mockReturnValue(of(UsersStub));
+        dependencies.usersService.fetchUsers.mockReturnValue(of(UsersStub));
 
         sut(action$, state$, dependencies).subscribe(next);
 
@@ -67,7 +84,7 @@ describe('homeEpics', () => {
     describe('when call failed', () => {
       it('emits FEETCH_USERS_FAILURE action', () => {
         const next = jest.fn();
-        dependencies.usersGateway.fetchUsers.mockReturnValue(
+        dependencies.usersService.fetchUsers.mockReturnValue(
           throwError(() => new Error('any error')),
         );
 

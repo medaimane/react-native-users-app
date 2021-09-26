@@ -4,7 +4,7 @@ import {Storage} from './Storage';
 
 export class StorageImpl implements Storage {
   getItem(key: string): Observable<string | null> {
-    console.log('[Storage] setItem called: Key [' + key + ']');
+    console.log('[Storage] getItem called: Key [' + key + ']');
 
     return from(AsyncStorage.getItem(key));
   }

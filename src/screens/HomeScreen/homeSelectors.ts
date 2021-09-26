@@ -1,3 +1,4 @@
+import {Local} from '../../localization/local';
 import {UserJSON} from '../../services/api/models/UserJSON';
 import {ViewState} from '../../store/ViewState';
 import {HomeState} from './homeReducer';
@@ -23,7 +24,7 @@ export function getViewState(state: HomeState): HomeViewState {
 function makeUserPresentable(u: UserJSON): UserPresentable {
   return {
     avatar: u.name[0].toUpperCase(),
-    age: `${u.age} years old`,
+    age: `${u.age} ${Local.yearsOld}`,
     name: u.name.toUpperCase(),
   };
 }

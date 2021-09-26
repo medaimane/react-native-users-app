@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, ViewStyle} from 'react-native';
 import {Colors} from '../../theme/Colors';
-import {Fonts, FontSize} from '../../theme/Fonts';
+import {Fonts} from '../../theme/Fonts';
 
 export function PrimaryButton(props: {
   title: string;
@@ -23,16 +23,14 @@ export function PrimaryButton(props: {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     borderRadius: 4,
     paddingVertical: 8,
-    marginHorizontal: 8,
-    paddingHorizontal: 16,
-    alignItems: 'center',
+    paddingHorizontal: 30,
     backgroundColor: Colors.Primary,
+    alignItems: 'center',
   },
   title: {
-    ...Fonts.Regular(FontSize.Header3),
+    ...Fonts.Regular(),
     color: Colors.White,
   },
 });

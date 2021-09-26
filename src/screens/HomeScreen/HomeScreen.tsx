@@ -1,6 +1,8 @@
 import React, {useCallback, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {PrimaryButton} from '../../components/buttons/PrimaryButton';
+import {ContainerView} from '../../components/ContainerView';
 import {RemoteData} from '../../components/RemoteData';
 import {TextView} from '../../components/TextView';
 import {UsersList} from '../../components/UsersList';
@@ -40,6 +42,10 @@ export function HomeScreen() {
         text={Local.appLogo}
       />
 
+      <ContainerView style={styles.buttonRow}>
+        <PrimaryButton title={Local.refresh} onPress={handleRefresh} />
+      </ContainerView>
+
       <RemoteData
         viewState={viewState}
         renderData={() => (
@@ -47,7 +53,6 @@ export function HomeScreen() {
             users={usersPresentable}
             onSortByName={handleSortingByName}
             onSortByAge={handleSortingByAge}
-            onRefrech={handleRefresh}
           />
         )}
       />
@@ -65,5 +70,8 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontSize: 36,
+  },
+  buttonRow: {
+    alignSelf: 'flex-end',
   },
 });

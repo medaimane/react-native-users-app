@@ -52,7 +52,7 @@ describe('homeReducer', () => {
     });
   });
 
-  describe('when SORT_BY_NAME action is received', () => {
+  describe('when SORT_BY_NAME_ASC action is received', () => {
     it('sorts users asc', () => {
       const state = stateWithUsers([
         {
@@ -81,7 +81,7 @@ describe('homeReducer', () => {
     });
   });
 
-  describe('when SORT_BY_AGE action is received', () => {
+  describe('when SORT_BY_AGE_ASC action is received', () => {
     it('sorts users asc', () => {
       const state = stateWithUsers([
         {

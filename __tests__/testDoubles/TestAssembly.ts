@@ -2,9 +2,9 @@ import {Dependencies} from '../../src/dependencies/Dependencies';
 import {UsersServiceStub} from './UsersServiceStub';
 
 export class TestAssembly implements Dependencies {
-  usersGateway: UsersServiceStub;
+  usersService: UsersServiceStub;
 
   constructor() {
-    this.usersGateway = new UsersServiceStub();
+    this.usersService = new UsersServiceStub();
   }
 }

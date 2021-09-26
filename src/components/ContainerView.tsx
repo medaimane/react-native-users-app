@@ -2,7 +2,10 @@ import React, {ReactNode} from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
 import {Styles} from '../theme/Styles';
 
-export function UsersListRow(props: {children?: ReactNode; style?: ViewStyle}) {
+export function ContainerView(props: {
+  children?: ReactNode;
+  style?: ViewStyle;
+}) {
   return <View style={[styles.container, props.style]}>{props.children}</View>;
 }
 
