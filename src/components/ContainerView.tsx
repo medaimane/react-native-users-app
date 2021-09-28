@@ -1,6 +1,5 @@
 import React, {ReactNode} from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
-import {Styles} from '../theme/Styles';
 
 export function ContainerView(props: {
   children?: ReactNode;
@@ -11,7 +10,6 @@ export function ContainerView(props: {
 
 const styles = StyleSheet.create({
   container: {
-    ...Styles.Shadow(),
     paddingVertical: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
