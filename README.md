@@ -9,7 +9,7 @@ The purpose of this react native app sample is to show a list of data and provid
 The app support offline mode and uses locally stored data for each api call. On the other hand, the stored data will be refreshed once in a hour.
 
 <div align="center">
-  <img src="./screenshots/Screenshots_01.png" width="350" />
+  <img src="./screenshots/Sceenshots_1.png" width="350" />
   <img src="./screenshots/Screenshots_02.png" width="350" />
 </div>
 
