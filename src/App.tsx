@@ -33,5 +33,6 @@ const styles = StyleSheet.create({
   text: {
     ...Fonts.Light(FontSize.SmallText),
     alignSelf: 'center',
+    marginTop: 8,
   },
 });

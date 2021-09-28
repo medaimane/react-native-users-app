@@ -8,6 +8,8 @@ import {TextView} from '../../components/TextView';
 import {UsersList} from '../../components/UsersList';
 import {Local} from '../../localization/local';
 import {RootState} from '../../store/rootState';
+import {PeopleIconSVG} from '../../svg/svg';
+import {Colors} from '../../theme/Colors';
 import {HomeViewActions} from './HomeActions';
 import {getViewState, HomeViewState} from './homeSelectors';
 
@@ -36,11 +38,10 @@ export function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <TextView
-        style={styles.logo}
-        textStyle={styles.logoText}
-        text={Local.appLogo}
-      />
+      <ContainerView style={styles.logo}>
+        <PeopleIconSVG fill={Colors.PrimaryLight} width={64} height={64} />
+        <TextView text={Local.appLogo} textStyle={styles.logoText} />
+      </ContainerView>
 
       <ContainerView style={styles.buttonRow}>
         <PrimaryButton title={Local.refresh} onPress={handleRefresh} />
@@ -66,7 +67,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   logo: {
-    paddingVertical: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logoText: {
     fontSize: 36,
