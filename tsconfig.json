@@ -64,5 +64,6 @@
     "babel.config.js",
     "metro.config.js",
     "jest.env.config.js"
-  ]
+  ],
+  "include": ["src", "typings", "__tests__"]
 }
