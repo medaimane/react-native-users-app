@@ -4,10 +4,12 @@ import {Local} from '../localization/local';
 import {ViewState} from '../store/ViewState';
 import {TextView} from './TextView';
 
-export function RemoteData(props: {
+interface Props {
   viewState: ViewState;
   renderData: () => ReactNode;
-}) {
+}
+
+export function RemoteData(props: Props) {
   const content = () => {
     switch (props.viewState) {
       case ViewState.Data: {

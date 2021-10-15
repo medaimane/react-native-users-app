@@ -4,12 +4,14 @@ import {Colors} from '../../theme/Colors';
 import {Fonts, FontSize} from '../../theme/Fonts';
 import {TextView} from '../TextView';
 
-export function TextButton(props: {
+interface Props {
   title: string;
   disabled?: boolean;
 
   onPress: () => void;
-}) {
+}
+
+export function TextButton(props: Props) {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <TextView text={props.title} />

@@ -4,7 +4,13 @@ import {Colors} from '../theme/Colors';
 import {Fonts, FontSize} from '../theme/Fonts';
 import {TextView} from './TextView';
 
-export function UserRow(props: {avatar: string; name: string; age: string}) {
+interface Props {
+  avatar: string;
+  name: string;
+  age: string;
+}
+
+export function UserRow(props: Props) {
   return (
     <>
       <TextView
