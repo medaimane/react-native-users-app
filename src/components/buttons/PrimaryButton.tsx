@@ -3,14 +3,15 @@ import {StyleSheet, Text, TouchableOpacity, ViewStyle} from 'react-native';
 import {Colors} from '../../theme/Colors';
 import {Fonts} from '../../theme/Fonts';
 
-export function PrimaryButton(props: {
+interface Props {
   title: string;
   disabled?: boolean;
-
   style?: ViewStyle;
 
   onPress: () => void;
-}) {
+}
+
+export function PrimaryButton(props: Props) {
   return (
     <TouchableOpacity
       style={[styles.container, props.style]}

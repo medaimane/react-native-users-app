@@ -8,12 +8,14 @@ import {UserRow} from './UserRow';
 import {ContainerView} from './ContainerView';
 import {ArrowUpIcon} from '../svg/svg';
 
-export function UsersList(props: {
+interface Props {
   users: UserPresentable[];
 
   onSortByName: () => void;
   onSortByAge: () => void;
-}) {
+}
+
+export function UsersList(props: Props) {
   const list = createRef<FlatList>();
 
   const [hasFooter, setHasFooter] = useState(false);
