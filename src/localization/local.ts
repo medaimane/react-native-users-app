@@ -1,5 +1,5 @@
 export const Local = {
-  appLogo: 'My Clients',
+  appLogo: 'Clients',
 
   refresh: 'Refresh',
 
